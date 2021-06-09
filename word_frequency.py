@@ -9,7 +9,7 @@ STOP_WORDS = [
 words = {}
 
 
-punc = '''!()-[]{};:'"\, <>./?@#$%^&*_~'''
+punc = '''!()-[]{};:'"\, <>./?@#$%^&*_~-'''
 
 
 def print_word_freq(file):
@@ -21,14 +21,15 @@ def print_word_freq(file):
             # print(i)
             if i[-1] in punc:
                 i = i.replace(i, i[0:-1])
-            print(i)
-        if i in STOP_WORDS:
-            pass
-        elif i in words:
-            words[i] += 1
-        else:
-            words[i] = 1
-    # print(words)
+            if i in STOP_WORDS:
+                pass
+            elif i in words:
+                words[i] += 1
+            else:
+                i = i.lower()
+                words[i] = 1
+    print(sorted(words, key=words.get, reverse=True))
+
     file.close()
 
 
