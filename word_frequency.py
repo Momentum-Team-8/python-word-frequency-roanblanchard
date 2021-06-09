@@ -28,8 +28,9 @@ def print_word_freq(file):
             else:
                 i = i.lower()
                 words[i] = 1
-    print(sorted(words, key=words.get, reverse=True))
-
+    for i in sorted(words, key=words.get, reverse=True):
+        print(i, words[i])
+        
     file.close()
 
 
