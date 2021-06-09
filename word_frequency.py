@@ -18,10 +18,11 @@ def print_word_freq(file):
     for i in read_file:
         x = i.split()
         for i in x:
-            # print(i)
             if i[-1] in punc:
                 i = i.replace(i, i[0:-1])
-            if i in STOP_WORDS:
+            elif i[0] in punc:
+                i = i.replace(i, i[1:-1])
+            elif i in STOP_WORDS:
                 pass
             elif i in words:
                 words[i] += 1
@@ -29,8 +30,7 @@ def print_word_freq(file):
                 i = i.lower()
                 words[i] = 1
     for i in sorted(words, key=words.get, reverse=True):
-        print(i, words[i])
-        
+        print(i, '|', words[i])
     file.close()
 
 
