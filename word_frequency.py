@@ -2,33 +2,32 @@
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
-    'will', 'with'
+    'will', 'with', '\n', ''
 ]
 
 
-words = {
+words = {}
 
-}
 
 punc = '''!()-[]{};:'"\, <>./?@#$%^&*_~'''
+
 
 def print_word_freq(file):
     file = open(file, "r")
     read_file = file.readlines()
-    # split_file = read_file.split()
-    # print(read_file)
     for i in read_file:
         x = i.split()
         for i in x:
+            # print(i)
             if i[-1] in punc:
-                i = i.replace(i, "")
+                i = i.replace(i, i[0:-1])
             print(i)
-        # if i in STOP_WORDS:
-        #     pass
-        # elif i in words:
-        #     words[i] += 1
-        # else:
-        #     words[i] = 1
+        if i in STOP_WORDS:
+            pass
+        elif i in words:
+            words[i] += 1
+        else:
+            words[i] = 1
     # print(words)
     file.close()
 
