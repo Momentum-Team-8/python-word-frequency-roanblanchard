@@ -1,3 +1,4 @@
+
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
@@ -5,9 +6,28 @@ STOP_WORDS = [
 ]
 
 
+words = {
+
+}
+
+
 def print_word_freq(file):
-    """Read in `file` and print out the frequency of words in that file."""
-    pass
+    file = open(file, "r")
+    read_file = file.readlines()
+    # split_file = read_file.split()
+    # print(read_file)
+    for i in read_file:
+        x = i.split()
+        for i in x:
+            print(i)
+        # if i in STOP_WORDS:
+        #     pass
+        # elif i in words:
+        #     words[i] += 1
+        # else:
+        #     words[i] = 1
+    # print(words)
+    file.close()
 
 
 if __name__ == "__main__":
