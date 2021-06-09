@@ -10,6 +10,7 @@ words = {
 
 }
 
+punc = '''!()-[]{};:'"\, <>./?@#$%^&*_~'''
 
 def print_word_freq(file):
     file = open(file, "r")
@@ -19,6 +20,8 @@ def print_word_freq(file):
     for i in read_file:
         x = i.split()
         for i in x:
+            if i[-1] in punc:
+                i = i.replace(i, "")
             print(i)
         # if i in STOP_WORDS:
         #     pass
